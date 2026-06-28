@@ -3,7 +3,7 @@ https://github.com/redbinary/digital-infidel/
 
 Simple AsteroidOS watchface.
 
-I made this for my Asus ZenWatch 2 'Sparrow' which has a square face. Not sure how it will layout for anything else. watches such as the Asus ZenWatch running AsteroidOS.
+I made this for my Asus ZenWatch 2 'Sparrow' which has a square face. Not sure how it will layout for anything else.
 
 Time and date are centered.
 
@@ -15,4 +15,3 @@ I borrowed the mass of the step counter from https://github.com/AsteroidOS/unoff
 hopefully I have attributed appropriately.
 
 I just made this watchface for myself but would feel remiss not making it available regardless of the quality.
-
