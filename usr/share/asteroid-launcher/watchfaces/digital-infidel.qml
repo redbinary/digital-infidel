@@ -59,12 +59,12 @@ Item {
     id: root
     anchors.fill: parent
 	
-	property bool useWidget_weather: true
-	property bool useWidget_battery: true
-	property bool useWidget_notifications: true
-	property bool useWidget_steps: false
+	readonly property bool useWidget_weather: true
+	readonly property bool useWidget_battery: true
+	readonly property bool useWidget_notifications: true
+	readonly property bool useWidget_steps: false
 
-    property bool useTwelveHour: true
+	readonly property bool useTwelveHour: use12H.value
 
     property string timeString: ""
     property string dateString: ""
@@ -87,20 +87,25 @@ Item {
         return n < 10 ? "0" + n : "" + n
     }
 
-    function refreshClock() {
-        var now = wallClock.time
-        var h = now.getHours()
-        var m = now.getMinutes()
+   function refreshClock() {
+		var now = wallClock.time
+		var h24 = now.getHours()
+		var m = now.getMinutes()
+		var h = h24
 
-        if (useTwelveHour) {
-            h = h % 12
-            if (h === 0)
-                h = 12
-        }
+		if (root.useTwelveHour) {
+			h = h24 % 12
 
-        timeString = h + ":" + twoDigits(m)
-        dateString = now.toLocaleString(Qt.locale(), "ddd, MMM d")
-    }
+			if (h === 0)
+				h = 12
+
+			timeString = h + ":" + twoDigits(m)
+		} else {
+			timeString = twoDigits(h24) + ":" + twoDigits(m)
+		}
+
+		dateString = now.toLocaleString(Qt.locale(), "ddd, MMM d")
+	}
 
     function clampBattery() {
         var p = Number(batteryLevel.percent)
